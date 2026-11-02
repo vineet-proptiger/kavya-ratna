@@ -26,12 +26,32 @@
       }
       body { font-family: 'Open Sans', sans-serif; margin: 0; background-color: #fdfbf7; }
       .btn-primary-pp {
-        background: #000000; color: #fff; border: 1px solid #000000; padding: 8px 20px;
+        background: #000000; color: #fff; border: 1px solid #000000; padding: 8px 18px;
         border-radius: 50px; font-size: 13px; font-weight: 600;
-        text-decoration: none; display: inline-flex; align-items: center;
-        transition: all 0.3s; box-shadow: 0 4px 14px rgba(0, 2, 66, 0.2);
+        text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        white-space: nowrap; flex-shrink: 0;
+        transition: all 0.3s ease; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
       }
-      .btn-primary-pp:hover { background: #333333; color: #fff; }
+      .btn-primary-pp:hover { background: #333333; color: #fff; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22); }
+      .btn-primary-pp .btn-text-short { display: none; }
+      .btn-primary-pp .btn-text-full { display: inline; }
+      .navbar-container {
+        max-width: 1200px; margin: 0 auto; padding: 0 16px;
+        display: flex; align-items: center; justify-content: space-between;
+        height: 76px; gap: 12px;
+      }
+      .navbar-spacer { height: 76px; }
+      .navbar-logo {
+        height: clamp(34px, 4.5vw, 46px); width: auto; object-fit: contain; display: block;
+      }
+      @media (max-width: 640px) {
+        .navbar-container { height: 60px; padding: 0 12px; }
+        .navbar-spacer { height: 60px; }
+        .navbar-logo { height: 32px; max-width: 170px; }
+        .btn-primary-pp { padding: 6px 14px; font-size: 12px; gap: 6px; }
+        .btn-primary-pp .btn-text-full { display: none; }
+        .btn-primary-pp .btn-text-short { display: inline; }
+      }
       .section-num {
         display: inline-flex; align-items: center; justify-content: center;
         width: 32px; height: 32px; border-radius: 50%;
@@ -45,14 +65,18 @@
   <!-- Navbar -->
   <nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
     <div style="height: 3px; width: 100%; background: linear-gradient(90deg, #111111, #666666, #111111);"></div>
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; height: 80px;">
-      <a href="index.html" style="display: flex; align-items: center;">
-        <img src="images/logo/logo.png" alt="Kaavyaratna The Ganga Logo" style="height: clamp(38px, 4.5vw, 48px); width: auto; object-fit: contain;">
+    <div class="navbar-container">
+      <a href="index.html" style="display: flex; align-items: center; flex-shrink: 0;">
+        <img src="images/logo/logo.png" alt="Kaavyaratna The Ganga Logo" class="navbar-logo">
       </a>
-      <a href="index.html" class="btn-primary-pp">← BACK TO HOME</a>
+      <a href="index.html" class="btn-primary-pp">
+        <i class="fa-solid fa-arrow-left" style="font-size: 11px;"></i>
+        <span class="btn-text-full">BACK TO HOME</span>
+        <span class="btn-text-short">HOME</span>
+      </a>
     </div>
   </nav>
-  <div style="height: 80px;"></div>
+  <div class="navbar-spacer"></div>
 
   <!-- Hero Banner -->
   <section style="position: relative; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 200px; background-image: url(images/hero/banner1.webp); background-size: cover; background-position: center;">
